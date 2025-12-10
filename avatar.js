@@ -1,6 +1,16 @@
 
-// Using global THREE from CDN
-window.onload = () => loadModel();
+// Using global THREE from CDN - wait for it to load
+function initAvatar() {
+  if (typeof THREE === 'undefined') {
+    console.warn('THREE not loaded yet, retrying...');
+    setTimeout(initAvatar, 100);
+    return;
+  }
+  loadModel();
+}
+
+window.addEventListener('DOMContentLoaded', initAvatar);
+window.addEventListener('load', initAvatar);
 
 function loadModel() {
   const container = document.getElementById('avatar-container');
