@@ -1,4 +1,4 @@
-// Use local copies to avoid CDN/network issues
+// Use local copies to avoid CDN/network issues - Updated: 2025-12-10
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js';
 import { GLTFLoader } from './libs/GLTFLoader.js';
 import { OrbitControls } from './libs/OrbitControls.js';
