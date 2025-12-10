@@ -1,16 +1,9 @@
 
-// Using global THREE from CDN - wait for it to load
-function initAvatar() {
-  if (typeof THREE === 'undefined') {
-    console.warn('THREE not loaded yet, retrying...');
-    setTimeout(initAvatar, 100);
-    return;
-  }
-  loadModel();
-}
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-window.addEventListener('DOMContentLoaded', initAvatar);
-window.addEventListener('load', initAvatar);
+window.onload = () => loadModel();
 
 function loadModel() {
   const container = document.getElementById('avatar-container');
@@ -23,8 +16,8 @@ function loadModel() {
   
   console.log('Loading 3D model...');
   
-  const loader = new THREE.GLTFLoader();
-  loader.load('/public/46936_autosave.glb',
+  const loader = new GLTFLoader();
+  loader.load('./46936_autosave.glb',
     (gltf) => {
       console.log('Model loaded successfully:', gltf);
       console.log('Animations available:', gltf.animations?.map(clip => clip.name) || 'None');
@@ -89,7 +82,7 @@ function setupScene(gltf) {
       60, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.set(0, 1, 4);
 
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.1;
     controls.enablePan = false;
