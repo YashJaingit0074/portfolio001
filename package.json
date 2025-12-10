@@ -4,6 +4,7 @@
   "description": "A modern, interactive portfolio website featuring a 3D avatar, smooth animations, and showcase of my projects.",
   "main": "avatar.js",
   "scripts": {
+    "dev": "http-server . -p 8000 -c-1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
